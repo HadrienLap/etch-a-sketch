@@ -1,0 +1,13 @@
+#grid {
+    width: 480px;
+    height: 480px;
+    background-color: tomato;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#grid div {
+    width: 30px;
+    height: 30px;
+    background-color: turquoise;
+}
