@@ -1,13 +1,13 @@
 #grid {
+    margin: auto;
+    margin-top: 150px;
     width: 480px;
     height: 480px;
-    background-color: tomato;
     display: flex;
     flex-wrap: wrap;
+    border: 1px solid black;
 }
 
 #grid div {
-    width: 30px;
-    height: 30px;
-    background-color: turquoise;
+    border: 1px solid lightgray;
 }
