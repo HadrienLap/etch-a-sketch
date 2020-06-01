@@ -1,11 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Annie+Use+Your+Telescope&family=Architects+Daughter&display=swap');
+
+body {
+    background-image: url('../images/background.svg');
+}
+
 #grid {
     margin: auto;
-    margin-top: 25px;
-    width: 650px;
-    height: 650px;
+    margin-top: 5px;
+    width: 600px;
+    height: 600px;
     display: flex;
     flex-wrap: wrap;
-    border: 1px solid black;
+    border: 25px solid #064a5d;
+    border-radius: 10px;
+    background-color: white;
 }
 
 #grid div {
@@ -19,5 +27,24 @@
 
 #buttons button {
     margin-right: 25px;
-    font-size: large;
+    font-family: 'Annie Use Your Telescope';
+    letter-spacing: 0.1em;
+    font-size: 25px;
+    font-weight: bold;
+    border-radius: 10px;
+    height: 45px;
+    width: 100px;
+    border-color: #383838;
+    background-color: #cbe5ec;
+    color: #333333;
+}
+
+#buttons button:hover {
+    background-color: #eaf1f3;
+    
+}
+
+#buttons button:focus {
+    outline: none;
+    background-color: #ffea41;
 }

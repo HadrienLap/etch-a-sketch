@@ -6,7 +6,7 @@ let gradientButton = document.getElementById('drawGradient');
 let eraseButton = document.getElementById('erase');
 
 // Generate a 16x16 grid on page load 
-const gridSize = 650;
+const gridSize = 600;
 let squaresNumber = 256;
 generateGrid (squaresNumber);
 
@@ -40,8 +40,7 @@ function refresh () {
 
 // Drawing functions  ---------------------------------------------------------------------------------------------
 
-let selectedMode = 'drawBlack';
-drawBG(drawBlack);
+let selectedMode = undefined;
 
 // Drawing mode selection
 blackButton.addEventListener('click', function(){selectedMode = 'drawBlack'; drawBG(drawBlack);});
