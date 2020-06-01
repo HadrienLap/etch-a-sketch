@@ -1,8 +1,8 @@
 #grid {
     margin: auto;
-    margin-top: 150px;
-    width: 480px;
-    height: 480px;
+    margin-top: 25px;
+    width: 650px;
+    height: 650px;
     display: flex;
     flex-wrap: wrap;
     border: 1px solid black;
@@ -10,4 +10,14 @@
 
 #grid div {
     border: 1px solid lightgray;
+}
+
+#buttons {
+    margin-top: 25px;
+    text-align: center;
+}
+
+#buttons button {
+    margin-right: 25px;
+    font-size: large;
 }
