@@ -4,6 +4,8 @@ let blackButton = document.getElementById('drawBlack');
 let randomButton = document.getElementById('drawRandom');
 let gradientButton = document.getElementById('drawGradient');
 let eraseButton = document.getElementById('erase');
+let buttons = document.querySelectorAll('button');
+let selectedMode = undefined;
 
 // Generate a 16x16 grid on page load 
 const gridSize = 600;
@@ -26,6 +28,10 @@ function generateGrid (squaresNumber) {
         square.style.width = squaresSizes - 2 + 'px';
         grid.appendChild(square);
     }
+
+    // draw Black mode selected on page load and after every refresh
+    selectedMode = 'drawBlack';
+    drawBG(drawBlack);
 }
 
 // Refresh button function
@@ -40,8 +46,6 @@ function refresh () {
 
 // Drawing functions  ---------------------------------------------------------------------------------------------
 
-let selectedMode = undefined;
-
 // Drawing mode selection
 blackButton.addEventListener('click', function(){selectedMode = 'drawBlack'; drawBG(drawBlack);});
 randomButton.addEventListener('click', function(){selectedMode = 'drawRandom'; drawBG(drawRandom);});
@@ -49,6 +53,9 @@ gradientButton.addEventListener('click', function(){selectedMode = 'drawGradient
 eraseButton.addEventListener('click', function(){selectedMode = 'erase'; drawBG(erase);});
 
 function drawBG (drawingMode) {
+    // Change the background Color of the selected drawing mode button
+    changeButtonBackground();
+
     // Creation of 'squares', an array of all the individual squares
     let squares = Array.from(grid.children);
 
@@ -91,3 +98,21 @@ function erase (e) {
 }
 
 // ---------------------------------------------------------------------------------------------
+
+// Change the Background Color of the selected drawing mode Button
+function changeButtonBackground () {
+    buttons.forEach(button => button.classList.remove('selectedButton'));
+
+    if (selectedMode == 'drawBlack') {
+        blackButton.classList.add('selectedButton');
+    }
+    if (selectedMode == 'drawRandom') {
+        randomButton.classList.add('selectedButton');
+    }
+    if (selectedMode == 'drawGradient') {
+        gradientButton.classList.add('selectedButton');
+    }
+    if (selectedMode == 'erase') {
+        eraseButton.classList.add('selectedButton');
+    }
+}

@@ -17,7 +17,7 @@ body {
 }
 
 #grid div {
-    border: 1px solid lightgray;
+    border: 1px solid #cbdff4;
 }
 
 #buttons {
@@ -41,10 +41,12 @@ body {
 
 #buttons button:hover {
     background-color: #eaf1f3;
-    
 }
 
 #buttons button:focus {
     outline: none;
-    background-color: #ffea41;
+}
+
+.selectedButton {
+    background-color: #ffea41 !important;
 }
