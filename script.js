@@ -24,8 +24,8 @@ function generateGrid (squaresNumber) {
 
     for (let i = 0; i < squaresNumber; i++){
         let square = document.createElement('div');
-        square.style.height = squaresSizes - 2 + 'px';
-        square.style.width = squaresSizes - 2 + 'px';
+        square.style.height = squaresSizes + 'px';
+        square.style.width = squaresSizes + 'px';
         grid.appendChild(square);
     }
 

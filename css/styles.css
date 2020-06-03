@@ -18,6 +18,7 @@ body {
 
 #grid div {
     border: 1px solid #cbdff4;
+    box-sizing: border-box;
 }
 
 #buttons {
