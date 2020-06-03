@@ -9,7 +9,7 @@ let selectedMode = undefined;
 
 // Generate a 16x16 grid on page load 
 const gridSize = 600;
-let squaresNumber = 256;
+let squaresNumber = 2500;
 generateGrid (squaresNumber);
 
 // Generation of the grid's squares
