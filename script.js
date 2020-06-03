@@ -7,7 +7,7 @@ let eraseButton = document.getElementById('erase');
 let buttons = document.querySelectorAll('button');
 let selectedMode = undefined;
 
-// Generate a 16x16 grid on page load 
+// Generate a 50x50 grid on page load 
 const gridSize = 600;
 let squaresNumber = 2500;
 generateGrid (squaresNumber);
