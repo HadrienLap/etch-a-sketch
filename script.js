@@ -1,11 +1,11 @@
-let grid = document.getElementById('grid');
-let refreshButton = document.getElementById('refreshButton');
-let blackButton = document.getElementById('drawBlack');
-let randomButton = document.getElementById('drawRandom');
-let gradientButton = document.getElementById('drawGradient');
-let eraseButton = document.getElementById('erase');
-let buttons = document.querySelectorAll('button');
-let selectedMode = undefined;
+const grid = document.getElementById('grid');
+const refreshButton = document.getElementById('refreshButton');
+const blackButton = document.getElementById('drawBlack');
+const randomButton = document.getElementById('drawRandom');
+const gradientButton = document.getElementById('drawGradient');
+const eraseButton = document.getElementById('erase');
+const buttons = document.querySelectorAll('button');
+let selectedMode = '';
 
 // Generate a 50x50 grid on page load 
 const gridSize = 600;
@@ -119,7 +119,7 @@ function changeButtonBackground () {
             break;
         case 'erase': 
             eraseButton.classList.add('selectedButton');
-    }
+    };
 }
    
 
