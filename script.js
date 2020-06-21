@@ -103,16 +103,20 @@ function erase (e) {
 function changeButtonBackground () {
     buttons.forEach(button => button.classList.remove('selectedButton'));
 
-    if (selectedMode == 'drawBlack') {
-        blackButton.classList.add('selectedButton');
-    }
-    if (selectedMode == 'drawRandom') {
-        randomButton.classList.add('selectedButton');
-    }
-    if (selectedMode == 'drawGradient') {
-        gradientButton.classList.add('selectedButton');
-    }
-    if (selectedMode == 'erase') {
-        eraseButton.classList.add('selectedButton');
+    switch (selectedMode) {
+        case 'drawBlack': 
+            blackButton.classList.add('selectedButton');
+            break;
+        case 'drawRandom': 
+            randomButton.classList.add('selectedButton');
+            break;
+        case 'drawGradient':
+            gradientButton.classList.add('selectedButton');
+            break;
+        case 'erase': 
+            eraseButton.classList.add('selectedButton');
     }
 }
+   
+
+    
