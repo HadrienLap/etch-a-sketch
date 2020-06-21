@@ -52,7 +52,7 @@ buttons.forEach(button => {
         if (e.target.id !== 'refreshButton') {
             selectedMode = e.target.id;
             drawBG(window[e.target.id]);
-        }
+        };
     });
 }); 
 
