@@ -47,10 +47,14 @@ function refresh () {
 // Drawing functions  ---------------------------------------------------------------------------------------------
 
 // Drawing mode selection
-blackButton.addEventListener('click', function(){selectedMode = 'drawBlack'; drawBG(drawBlack);});
-randomButton.addEventListener('click', function(){selectedMode = 'drawRandom'; drawBG(drawRandom);});
-gradientButton.addEventListener('click', function(){selectedMode = 'drawGradient'; drawBG(drawGradient);});
-eraseButton.addEventListener('click', function(){selectedMode = 'erase'; drawBG(erase);});
+buttons.forEach(button => {
+    button.addEventListener('click', (e) => {
+        if (e.target.id !== 'refreshButton') {
+            selectedMode = e.target.id;
+            drawBG(window[e.target.id]);
+        }
+    });
+}); 
 
 function drawBG (drawingMode) {
     // Change the background Color of the selected drawing mode button
