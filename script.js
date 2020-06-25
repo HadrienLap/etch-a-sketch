@@ -1,126 +1,77 @@
 const grid = document.getElementById('grid');
-const refreshButton = document.getElementById('refreshButton');
-const blackButton = document.getElementById('drawBlack');
-const randomButton = document.getElementById('drawRandom');
-const gradientButton = document.getElementById('drawGradient');
-const eraseButton = document.getElementById('erase');
 const buttons = document.querySelectorAll('button');
+const gridSize = 600;
+let squaresNumber = '';
 let selectedMode = '';
 
 // Generate a 50x50 grid on page load 
-const gridSize = 600;
-let squaresNumber = 2500;
-generateGrid (squaresNumber);
+generateGrid(2500);
 
 // Generation of the grid's squares
 function generateGrid (squaresNumber) {
     // Calcul of the squares sizes (height and width)
     let squaresSizes = gridSize / (Math.sqrt(squaresNumber));
-
     // Erase preexistent divs
     while (grid.lastChild) {
         grid.removeChild(grid.lastChild);
     }
-
+    // Create the grid's squares
     for (let i = 0; i < squaresNumber; i++){
         let square = document.createElement('div');
         square.style.height = squaresSizes + 'px';
         square.style.width = squaresSizes + 'px';
         grid.appendChild(square);
     }
-
-    // draw Black mode selected on page load and after every refresh
     selectedMode = 'drawBlack';
-    drawBG(drawBlack);
+    buttonBackground();
+    drawBG();
 }
 
-// Refresh button function
-refreshButton.addEventListener('click', refresh);
-
-function refresh () {
-    let gridSize = prompt('How many squares per side would you like?');
-    while (gridSize > 100) { gridSize = prompt('Choose a size smaller than 100')};
-    squaresNumber = gridSize * gridSize;
-    generateGrid (squaresNumber);
-}
-
-// Drawing functions  ---------------------------------------------------------------------------------------------
-
-// Drawing mode selection
 buttons.forEach(button => {
     button.addEventListener('click', (e) => {
-        if (e.target.id !== 'refreshButton') {
+        if (e.target.id === 'refreshButton') {
+            let gridSize = prompt('How many squares per side would you like?');
+            while (gridSize > 100) { gridSize = prompt('Choose a size smaller than 100')};
+            generateGrid(gridSize * gridSize);   
+        } else {
             selectedMode = e.target.id;
-            drawBG(window[e.target.id]);
-        };
+            buttonBackground();
+        }
     });
 }); 
 
-function drawBG (drawingMode) {
-    // Change the background Color of the selected drawing mode button
-    changeButtonBackground();
-
-    // Creation of 'squares', an array of all the individual squares
+function drawBG () {
     let squares = Array.from(grid.children);
-
-    // Listen for each item of 'squares' array a mouseenter event
-    squares.forEach(square => square.addEventListener('mouseenter', drawingMode));
-}
-
-// Change the background color of the target div to black
-function drawBlack (e) {
-    if (selectedMode !== 'drawBlack') { return;};
-    e.target.style.backgroundColor ="black";
-    e.target.style.opacity = 1;
-}
-
-// Change the background color of the target div to random color
-function drawRandom (e) {
-    if (selectedMode !== 'drawRandom') { return;};
-    e.target.style.backgroundColor =`rgb(${randomColorValue()}, ${randomColorValue()}, ${randomColorValue()})`;
-    e.target.style.opacity = 1;
+    squares.forEach(square => square.addEventListener('mouseenter', (e) => {
+        switch (selectedMode) {
+            case 'drawBlack':
+                e.target.style.backgroundColor ="black";
+                e.target.style.opacity = 1;
+                break;
+            case 'drawRandom':
+                e.target.style.backgroundColor =`rgb(${randomColorValue()}, ${randomColorValue()}, ${randomColorValue()})`;
+                e.target.style.opacity = 1;
+                break;
+            case 'drawGradient': 
+                e.target.style.backgroundColor = 'black';
+                let opacity = Number(e.target.style.opacity);
+                e.target.style.opacity = opacity + 0.1;
+                break;
+            case 'erase':
+                e.target.style.backgroundColor = 'white';
+                e.target.style.opacity = null;
+        };
+    }));
 }
 
 function randomColorValue () {
-    let colorValue = Math.floor(Math.random()*255);
-    return colorValue;
+    return Math.floor(Math.random()*255);
 }
 
-// Change the background color of the target div to 10% darker
-function drawGradient (e) {
-    if (selectedMode !== 'drawGradient') { return;};
-    e.target.style.backgroundColor = 'black';
-    let opacity = Number(e.target.style.opacity);
-    e.target.style.opacity = opacity + 0.1;
+function buttonBackground () {
+    buttons.forEach(button => {
+        if (button.id === selectedMode) {
+            button.classList.add('selectedButton');
+        } else button.classList.remove('selectedButton');
+    });
 }
-
-// Erase the the background color to initial state
-function erase (e) {
-    if (selectedMode !== 'erase') { return;};
-    e.target.style.backgroundColor = 'white';
-    e.target.style.opacity = null;
-}
-
-// ---------------------------------------------------------------------------------------------
-
-// Change the Background Color of the selected drawing mode Button
-function changeButtonBackground () {
-    buttons.forEach(button => button.classList.remove('selectedButton'));
-
-    switch (selectedMode) {
-        case 'drawBlack': 
-            blackButton.classList.add('selectedButton');
-            break;
-        case 'drawRandom': 
-            randomButton.classList.add('selectedButton');
-            break;
-        case 'drawGradient':
-            gradientButton.classList.add('selectedButton');
-            break;
-        case 'erase': 
-            eraseButton.classList.add('selectedButton');
-    };
-}
-   
-
-    
